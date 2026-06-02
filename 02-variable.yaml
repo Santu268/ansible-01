@@ -1,16 +1,6 @@
 - name: demo on variables
   hosts: frontend
-  vars:
-    my_name: "Ansible"
-    my_age: 5
-    my_list: [ item1, item2, item3 ]
   tasks:
     - name: print my name
       debug:
         msg: "My name is {{ my_name }}"
-    - name: print my age
-      debug:
-        msg: "My age is {{ my_age }}"
-    - name: print my list
-      debug:
-        msg: "My list is {{ my_list }}"
