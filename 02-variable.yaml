@@ -3,10 +3,7 @@
   vars:
     my_name: "Ansible"
     my_age: 5
-    my_list:
-      - item1
-      - item2
-      - item3
+    my_list: [ item1, item2, item3 ]
   tasks:
     - name: print my name
       debug:
