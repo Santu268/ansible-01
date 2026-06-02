@@ -1,0 +1,6 @@
+- name: ping the servers
+  hosts: frontend
+  #gather_facts: yes
+  tasks:
+    - name: ping the servers
+      ansible.builtin.ping:
