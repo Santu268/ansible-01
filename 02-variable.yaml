@@ -3,4 +3,4 @@
   tasks:
     - name: print my name
       debug:
-        msg: "My name is {{ my-name }}"
+        msg: "My name is {{ my_name }}"
