@@ -16,16 +16,25 @@
         security_groups:
           - roboshop-common
           - roboshop-"{{ item }}"
+      loop: "{{ instances }}"
+      register: ec2_output
+
+    - name: debug the message
       debug:
         msg: "{{ item }} ec2 instance created"
       loop: "{{ instances }}"
-      
+      when: activity == "create"
+
     - name: destroy ec2 instance
       amazon.aws.ec2_instance:
         name: "{{ item }}"
         state: absent
         image_id: "{{ ami_id }}"
-      debug:
-        msg: "{{ item }} ec2 instance destroyed"
       loop: "{{ instances }}"
-      when: activity == destroy
+      when: activity == "destroy"
+
+    - name: debug the message
+      debug:
+        msg: "{{ item }} ec2 instance created"
+      loop: "{{ instances }}"
+      when: activity == "create"
