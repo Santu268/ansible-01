@@ -31,6 +31,7 @@
         state: absent
         image_id: "{{ ami_id }}"
       loop: "{{ instances }}"
+      wait: false
       when: activity == "destroy"
 
     - name: debug the message
