@@ -1,0 +1,13 @@
+- name: demo on loops
+  hosts: local
+  gather_facts: true
+  tasks:
+    - name: print numbers from 1 to 5
+      debug:
+        msg: "{{ item.a }}"
+      loop:
+        - { a: 1 }
+        - { a: 2 }
+        - { a: 3 }
+        - { a: 4 }
+        - { a: 5 }

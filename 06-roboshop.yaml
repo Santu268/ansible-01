@@ -1,0 +1,30 @@
+- name: roboshop instances management
+  hosts: local
+  connection: local
+  vars:
+    ami_id: ami-0220d79f3f480ecf5
+    domain_id: santoshshell.online
+    type: t3.small
+    instances: ["mongodb","redis","mysql","rabbitmq"]
+    activity: create
+  tasks:
+    - name: create ec2 instance
+      amazon.aws.ec2_instance:
+        name: "{{ item }}"
+        instance_type: "{{ type }}"
+        image_id: "{{ ami_id }}"
+        security_groups:
+          - roboshop-common
+          - roboshop-"{{ item }}"
+      debug:
+        msg: "{{ item }} ec2 instance created"
+      loop: {{ instances }}
+    - name: destroy ec2 instance
+      amazon.aws.ec2_instance:
+        name: "{{ item }}"
+        state: absent
+        image_id: "{{ ami_id }}"
+      debug:
+        msg: "{{ item }} ec2 instance destroyed"
+      loop: {{ instances }}
+      when: activity == destroy

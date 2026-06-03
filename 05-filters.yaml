@@ -1,0 +1,14 @@
+- name: demo on filters
+  hosts: local
+  connection: local
+  tasks: 
+    - name: pring the variable
+      ansible.builtin.debug:
+        msg: "{{tempvar | default('data_passed')}}"
+      register: output
+    - name: update the data to new variable
+      ansible.builtin.set_fact:
+        tempvar2: "{{output}}"
+    - name: print registered output
+      debug:
+        var: tempvar2
