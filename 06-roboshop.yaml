@@ -15,7 +15,7 @@
         image_id: "{{ ami_id }}"
         security_groups:
           - roboshop-common
-          - roboshop-"{{ item }}"
+          - roboshop-{{ item }}
       loop: "{{ instances }}"
       register: ec2_output
 
