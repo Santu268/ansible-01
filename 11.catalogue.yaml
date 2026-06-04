@@ -1,0 +1,20 @@
+- name: configure catalogue for roboshop
+  hosts: catalogue
+  become: true
+  tasks:
+    - name: Enable the specific Node.js 20 stream
+      ansible.builtin.dnf:
+        name: "@nodejs:20"
+        state: present 
+    - name:  startNode.js 20 stream
+      ansible.builtin.dnf:
+        name: nodejs
+        state: present
+    - name: create user for application
+      ansible.builtin.user:
+        name: roboshop
+        shell: /sbin/nologin
+        home: /app
+        system: true
+        comment: "roboshop system user"
+    
