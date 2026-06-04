@@ -1,0 +1,12 @@
+- name: configure payment service for roboshop
+  hosts: payment
+  become: true
+  tasks:
+    - name: install multiple python packages
+      ansible.builtin.dnf:
+        name: {{ item }}
+        state: present
+      loop:
+        - python
+        - gcc
+        - python-devel

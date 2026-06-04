@@ -7,5 +7,6 @@ REDIS_HOST: redis.santoshshell.online
 CATALOGUE_HOST: catalogue.santoshshell.online
 USER_HOST: user.santoshshell.online
 CART_HOST: cart.santoshshell.online
+SHIPPING_HOST: shipping.santoshshell.online
 PAYMENT_HOST: payment.santoshshell.online
 FRONTEND: frontend.santoshshell.online
