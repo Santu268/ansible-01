@@ -36,10 +36,10 @@
     - name: down the payment code
       ansible.builtin.get_url:
         url: https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip
-        dest: /tmp/shipping.zip
+        dest: /tmp/payment.zip
     - name: Copy and extract local zip file to the remote server
       ansible.builtin.unarchive:
-        src: /tmp/shipping.zip
+        src: /tmp/payment.zip
         dest: /app
         remote_src: yes
     - name: install pip with requiremens
@@ -52,7 +52,7 @@
         dest: /etc/systemd/system/payment.service
     - name: load the daemon services
       ansible.builtin.systemd_service:
-        name: shipping 
+        name: payment 
         daemon_reload: true
         state: restarted
         enabled: true
